@@ -6,6 +6,22 @@ import axios from "axios";
 export const Navbar = () => {
   const {currentUser, logout} = useContext(AuthContext);
   const [user, setUser] = useState({})
+  const [stickyClass, setStickyClass] = useState('');
+
+  useEffect(() => {
+    window.addEventListener('scroll', stickNavbar);
+
+    return () => {
+      window.removeEventListener('scroll', stickNavbar);
+    };
+  }, []);
+
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      let windowHeight = window.scrollY;
+      windowHeight > 500 ? setStickyClass('sticky-nav') : setStickyClass('');
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +36,7 @@ export const Navbar = () => {
   }, [currentUser?.id]);
 
   return (
-    <div className="navbar sticky-nav">
+    <div className={`navbar ${stickyClass}`}>
       <div className="container">
         <div className="logo">
           <Link to="/"><img src="https://images8.alphacoders.com/505/505616.png" alt="lotr"/></Link>

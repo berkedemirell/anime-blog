@@ -1087,6 +1087,17 @@ html {
         font-size: 3rem;
     }
 
+    .sticky-nav {
+        position: fixed;
+        background-color: rgba(92, 82, 82, 0.92);
+        z-index: 2;
+        padding: 0.1rem 0.7rem 0.1rem 0.7rem;
+        margin-top: 0;
+        border-radius: 0.5rem;
+        
+    }
+
+
 
 }
 
